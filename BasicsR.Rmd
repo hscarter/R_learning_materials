@@ -1,0 +1,199 @@
+---
+title: "Basic operations and syntax in R"
+author: "Haley Carter"
+date: "2023-01-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+myList <- c(6, 7, 8, 9, 10)
+x <- 5
+y <- 4
+lots <- c("lot1", "lot2", "lot3", "lot4")
+lotLengths <- c(35, 40, 38, 20)
+lotWidths <- c(14, 10, 16, 25)
+lotAreas <- lotLengths*lotWidths
+```
+
+Before we start working with data in R, it's helpful to know some of the basic operations R can perform and to get a feel for the syntax of R. 
+
+R is an object based language. You will spend a lot of time defining and then manipulating objects in your environment. Objects can be simple, a single number for example, or more complicated like an entire dataframe. To be defined and saved in R's memory they must have a name. 
+
+To create an object we use the 'gets' operator: <-
+
+On the left side of the gets operator you write the name of the object you are creating, and on the right side you assign whatever information you want retained in that object. For example the following line of code creates an object named "George" which is assigned the numeric value 42.
+
+```{r}
+George <- 42
+```
+
+Some things to note:
+George is capitalized. If you want to reference this object you need to use the capitalization.
+The assigned value is a number. Because it is a number you could use it in mathematical operations. 
+
+You can check the class of an object with the function: class()
+
+```{r}
+class(George)
+```
+
+The classes of objects matter because certain functions only work on certain classes of object.... 
+
+## ...wait, what's a function?
+
+If you started with the "What is R?" tutorial you've seen a bunch of functions already, but I never defined the term. If you're thinking about R as a language it might be helpful to think of functions like verbs. Functions do something. What they do depends on the function, and what arguments you give it. 
+
+Mathematically, y = mx + b is a function. It defines a line. m, x, and b are all arguments of the function. m is the slope, x is a variable, b is the y-intercept. m and b are necessary arguments. The function needs them to define a line. x is not a necessary argument, it is only necessary if you want a specific value of y. 
+
+Functions in R don't have the same syntax as functions in math, but they still take arguments to operate. 
+
+class() takes the object you're interested in as an argument to return what type of object it is. Let's define some more objects and learn some more functions. 
+
+## Lists
+
+One useful function is c() or the "concatenate" function. To concatenate is to put things together. c() puts things together into a list. Run the following line of code:
+
+```{r}
+my_list <- c(1, 2, 3, 4, 5)
+```
+
+Now you have a new object named "my_list" which is a list of numbers 1 through 5. 
+
+### Exercise 1
+
+Create another list called "myList" which includes the numbers 6 through 10. Answers to exercises are at the bottom of the document. 
+
+```{r}
+
+```
+
+Now you have two lists. Notice the names. They are very similar and would be read allowed the same but they use two different techniques to avoid the fact that R doesn't allow spaces in object names. Another technique would be to use a period between the words. 
+
+Both of these lists contain numbers so we can use functions that work with numbers on them. mean() takes the average, median() gives the median, sum() gives the sum.
+
+### Example
+
+```{r}
+mean(my_list)
+```
+
+### Exercise 2
+
+Use the example above as a guide to find the mean, median, and sum of both your lists.
+
+```{r}
+
+```
+
+sum() added all the entries of each list together, what if we wanted to add my_list to myList?
+
+There are two ways to do this, depending on what we want. Do you want to add the first entry in my_list to the first entry of myList and the second entry of my_list to the second entry of myList and so forth resulting in a new list? Or do you want to add all the entries of both lists together resulting in just one number?
+
+Which does sum() do if you use the names of the lists?
+
+```{r}
+sum(my_list, myList)
+```
+It adds all the entries together to give you one number.
+
+Notice that in this case, we gave sum two arguments instead of just one. When multiple arguments are used in a function they are separated by a comma.
+
+So how do we do the other type of addition?
+
+## Mathematical operators
+
+In this case we don't have to use a function, we can just use the addition operator: +
+
+```{r}
+my_list + myList
+```
+R recognizes mathematical operators and can be used to do calculations. 
+
+### Exercise 3
+
+Define two objects: x which is the number 5, and y which is the number 4. 
+
+```{r}
+
+```
+
+You can now do basic math with x and y, using their names.
+
+```{r}
+x + y
+x - y
+x/y
+x*y
+x^y
+```
+
+## How could this calculator function and assigning names be useful for working with data?
+
+You're probably not learning R to use it just as a calculator, so let's think about how these functions could be useful for working with data.
+
+Let's say I'm working with abandoned lots in a city and I've numbered them and have their lengths from the front of the lot to the back alley and the distance along the sidewalk in front as their widths. Run the code below to save that information as lists.
+
+```{r}
+lots <- c("lot1", "lot2", "lot3", "lot4")
+lotLengths <- c(35, 40, 38, 20)
+lotWidths <- c(14, 10, 16, 25)
+```
+
+### Exercise 4
+
+How would I find the area of the lots?
+
+```{r}
+
+```
+
+How could I save that information to a new list called lotAreas?
+
+```{r}
+
+```
+
+## Dataframes
+
+These lists can be used on their own, but they're all information about the same lots so it would make sense to put that information together. In this case each list is a different measure for each lot so they should be put together as columns. We can do that with the cbind() function. If each list was observations about 1 lot we could bind them together as rows using rbind().
+
+```{r}
+lotData <- cbind(lots, lotLengths, lotWidths, lotAreas)
+lotData
+```
+
+
+## Answers to exercises
+
+### Exercise 1
+
+```{r}
+myList <- c(6, 7, 8, 9, 10)
+```
+
+### Exercise 2
+
+```{r}
+mean(my_list)
+median(my_list)
+sum(my_list)
+
+mean(myList)
+median(myList)
+sum(myList)
+```
+### Exercise 3
+
+```{r}
+x <- 5
+y <- 4
+```
+
+### Exercise 4
+
+```{r}
+lotLengths * lotWidths
+lotAreas <- lotLengths * lotWidths
+```
+

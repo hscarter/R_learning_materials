@@ -1,0 +1,80 @@
+---
+title: "What is R, why use it?"
+author: "H. Carter"
+date: "5/21/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## What is R?
+
+R is a programming language, meaning it is a way to communicate to your computer tasks you want performed. You can think of it as a language; it has syntax and grammer rules. You can also think of it as a tool; you're probably learning R to be better able to accomplish a task, not just because you want a new way to talk to the computer. 
+
+Also practically speaking, R is software you will need to download from the internet. 
+
+### Exercise 1: Install R and RStudio
+Navigate to https://cloud.r-project.org/. Click the appropriate download for the type of computer you are working with. This will take you to a page with different version options. Whatever is on the top, the newest version, should be fine. Click on it to start the download. 
+
+In addition to R, we will also be installing and using RStudio. This is a very well built and intuitive user interface: RStudio. R can be used without RStudio, but I think RStudio offers a lot of great functionality and provides a friendlier interface for those new to coding.
+
+Navigate to https://www.rstudio.com/products/rstudio/download/. Click "Download" under RStudio Desktop and it should give you the recommended version for your computer system, which you can then download and install. 
+
+## Orienting yourself in RStudio
+
+### Exercise 2: Start a project in RStudio
+Open RStudio by clicking the new icon in your applications. We want to start a new Project in RStudio, which will help us keep all our working files in one place. On the dropdown menu under "File" on your top toolbar, click "New Project..." OR click the Project button on the top right corner of your window and select "New Project...". Now select "New Directory", and "New Project" which will create a new folder on your computer where we will work from and keep all our files. "Browse" will let you chose where on your computer that folder should be.
+
+Now that you have a new project folder, let's put something in it! Download this tutorial and corresponding files from github.com/hscarter and save them in your project folder. When you open it you should see it appear in a new panel in your RStudio window.
+
+### Exercise 3: What are all these panels?
+You should be now reading this file in the upper right hand corner of your window. If you had multiple files open they would show up as tabs in this panel.
+
+To the right of this panel is your environment, which we will come back to. And below that is a panel with tabs called "Files", "Plots", "Packages", "Help", and "Viewer". Click on Files, if that isn't already the tab you're on, and you should see your computer's file system. Make sure this file "WhatIsR.RMD" is in your project folder.
+
+Below this panel, in the lower left hand corner is the console. This is where you can actually run code. Right now it probably just tells you what version of R you're using. But let's change that!
+
+Copy and paste the following line of code into your console and hit enter.
+
+```{r}
+print("Hello! I'm so excited about learning R!")
+```
+
+Now click your cursor on the line above and hit the command and return keys (on a Mac) or the control and return keys (on a PC). Both should run the line in the console and return the sentence "Hello! I'm so excited about learning R!". 
+
+You can change what is in the quotes to get it to print other things.
+
+## Why use R?
+
+R doesn't just return the words we give it. It was originally designed for statistical computing, which is useful for a variety of fields. I come from an ecology and biology background where we tend to have bulky and complicated datasets that need statistical analysis. R is great for this! It is also a powerful tool for data cleaning, manipulation, visualization, and modeling. 
+
+Let's take a look at some of the cool things we can do with R.
+
+### Exercise 4: Built in datasets
+R has a lot of built in datasets you can work with, which is helpful for teaching some of the functionality. You can find a description of all of them using the command 
+
+data()
+
+We will work with a dataset called "PlantGrowth", to load it into your environment run the following line of code.
+
+```{r}
+data("PlantGrowth")
+```
+
+If you look to the right you can now see the object PlantGrowth in your environment. Click on the name. It will print the dataset to your console and change the object in your environment to loaded data. Click on the name again and an excel-like display of the dataset will pop up in your file panel.
+
+Run the following lines of code to continue to explore PlantGrowth.
+
+```{r}
+head(PlantGrowth)
+PlantGrowth
+tail(PlantGrowth)
+summary(PlantGrowth)
+names(PlantGrowth)
+plot(weight~group, PlantGrowth)
+```
+
+What are some things you've learned? What do these functions do?
+
