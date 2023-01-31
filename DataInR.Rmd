@@ -1,0 +1,55 @@
+---
+title: "Data in R"
+author: "Haley Carter"
+date: "2023-01-31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Working with data in R requires getting data into your R environment. At the end of the Basics tutorial we put together a dataframe of information we made up about abandoned lots. For small datasets, manual entry like that might be worth doing so let's revisit those functions.
+
+## Manual entry
+
+* c() combines items into a list or vector
+* rbind() combines vectors into a dataframe as rows
+* cbind() combines vectors into a dataframe as columns
+
+### Exercise 1: make up some data!
+
+```{r}
+# make up three lists you can combine in different ways
+# need some inspiration? how about...
+# three lists of the age, favorite color, and birthday of people you know. do these make sense to combine as rows or columns?
+# a list of books, a list of their authors, and a list of whether or not you like them
+# do these make sense to combine as rows or columns?
+```
+
+
+Note that my suggestions are within the code block but they don't run as lines of code. This is because they start with # which makes them 'comments'. Comments are useful for putting notes in your code. 
+
+## Reading in data files from your computer
+
+Odds are, recording your data in R is not the best way forward for real research projects. Many people enter their data in Excel. We can read those files into R in a couple ways.
+
+### Files types from Excel
+
+You can save different files from Excel. Most newer versions default to xlsx and older versions to xls. Either of these can be read into R without conversion, but it does require a function that is not included in the basic functions of R. That will be covered a little later. 
+
+A great option is to save files as comma separated values or a .csv file. This is possible through Excel using "Save as..." but it will only save one sheet of a workbook so if you're using multiple tabs they'll need to be saved separately. 
+
+Let's read in...
+
+```{r}
+#data_csv <- read.csv()
+```
+
+
+### Other packages
+
+```{r}
+
+```
+

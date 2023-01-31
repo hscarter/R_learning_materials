@@ -163,6 +163,7 @@ lotData <- cbind(lots, lotLengths, lotWidths, lotAreas)
 lotData
 ```
 
+## Now you have data in R!
 
 ## Answers to exercises
 

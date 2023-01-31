@@ -11,9 +11,9 @@
 
 <meta name="author" content="Haley Carter" />
 
-<meta name="date" content="2023-01-04" />
+<meta name="date" content="2023-01-31" />
 
-<title>Basic operations and syntax in R</title>
+<title>Data in R</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -356,195 +356,57 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Basic operations and syntax in R</h1>
+<h1 class="title toc-ignore">Data in R</h1>
 <h4 class="author">Haley Carter</h4>
-<h4 class="date">2023-01-04</h4>
+<h4 class="date">2023-01-31</h4>
 
 </div>
 
 
-<p>Before we start working with data in R, it’s helpful to know some of
-the basic operations R can perform and to get a feel for the syntax of
-R.</p>
-<p>R is an object based language. You will spend a lot of time defining
-and then manipulating objects in your environment. Objects can be
-simple, a single number for example, or more complicated like an entire
-dataframe. To be defined and saved in R’s memory they must have a
-name.</p>
-<p>To create an object we use the ‘gets’ operator: &lt;-</p>
-<p>On the left side of the gets operator you write the name of the
-object you are creating, and on the right side you assign whatever
-information you want retained in that object. For example the following
-line of code creates an object named “George” which is assigned the
-numeric value 42.</p>
-<pre class="r"><code>George &lt;- 42</code></pre>
-<p>Some things to note: George is capitalized. If you want to reference
-this object you need to use the capitalization. The assigned value is a
-number. Because it is a number you could use it in mathematical
-operations.</p>
-<p>You can check the class of an object with the function: class()</p>
-<pre class="r"><code>class(George)</code></pre>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<p>The classes of objects matter because certain functions only work on
-certain classes of object….</p>
-<div id="wait-whats-a-function" class="section level2">
-<h2>…wait, what’s a function?</h2>
-<p>If you started with the “What is R?” tutorial you’ve seen a bunch of
-functions already, but I never defined the term. If you’re thinking
-about R as a language it might be helpful to think of functions like
-verbs. Functions do something. What they do depends on the function, and
-what arguments you give it.</p>
-<p>Mathematically, y = mx + b is a function. It defines a line. m, x,
-and b are all arguments of the function. m is the slope, x is a
-variable, b is the y-intercept. m and b are necessary arguments. The
-function needs them to define a line. x is not a necessary argument, it
-is only necessary if you want a specific value of y.</p>
-<p>Functions in R don’t have the same syntax as functions in math, but
-they still take arguments to operate.</p>
-<p>class() takes the object you’re interested in as an argument to
-return what type of object it is. Let’s define some more objects and
-learn some more functions.</p>
-</div>
-<div id="lists" class="section level2">
-<h2>Lists</h2>
-<p>One useful function is c() or the “concatenate” function. To
-concatenate is to put things together. c() puts things together into a
-list. Run the following line of code:</p>
-<pre class="r"><code>my_list &lt;- c(1, 2, 3, 4, 5)</code></pre>
-<p>Now you have a new object named “my_list” which is a list of numbers
-1 through 5.</p>
-<div id="exercise-1" class="section level3">
-<h3>Exercise 1</h3>
-<p>Create another list called “myList” which includes the numbers 6
-through 10. Answers to exercises are at the bottom of the document.</p>
-<p>Now you have two lists. Notice the names. They are very similar and
-would be read allowed the same but they use two different techniques to
-avoid the fact that R doesn’t allow spaces in object names. Another
-technique would be to use a period between the words.</p>
-<p>Both of these lists contain numbers so we can use functions that work
-with numbers on them. mean() takes the average, median() gives the
-median, sum() gives the sum.</p>
-</div>
-<div id="example" class="section level3">
-<h3>Example</h3>
-<pre class="r"><code>mean(my_list)</code></pre>
-<pre><code>## [1] 3</code></pre>
-</div>
-<div id="exercise-2" class="section level3">
-<h3>Exercise 2</h3>
-<p>Use the example above as a guide to find the mean, median, and sum of
-both your lists.</p>
-<p>sum() added all the entries of each list together, what if we wanted
-to add my_list to myList?</p>
-<p>There are two ways to do this, depending on what we want. Do you want
-to add the first entry in my_list to the first entry of myList and the
-second entry of my_list to the second entry of myList and so forth
-resulting in a new list? Or do you want to add all the entries of both
-lists together resulting in just one number?</p>
-<p>Which does sum() do if you use the names of the lists?</p>
-<pre class="r"><code>sum(my_list, myList)</code></pre>
-<pre><code>## [1] 55</code></pre>
-<p>It adds all the entries together to give you one number.</p>
-<p>Notice that in this case, we gave sum two arguments instead of just
-one. When multiple arguments are used in a function they are separated
-by a comma.</p>
-<p>So how do we do the other type of addition?</p>
+<p>Working with data in R requires getting data into your R environment.
+At the end of the Basics tutorial we put together a dataframe of
+information we made up about abandoned lots. For small datasets, manual
+entry like that might be worth doing so let’s revisit those
+functions.</p>
+<div id="manual-entry" class="section level2">
+<h2>Manual entry</h2>
+<ul>
+<li>c() combines items into a list or vector</li>
+<li>rbind() combines vectors into a dataframe as rows</li>
+<li>cbind() combines vectors into a dataframe as columns</li>
+</ul>
+<div id="exercise-1-make-up-some-data" class="section level3">
+<h3>Exercise 1: make up some data!</h3>
+<pre class="r"><code># make up three lists you can combine in different ways
+# need some inspiration? how about...
+# three lists of the age, favorite color, and birthday of people you know. do these make sense to combine as rows or columns?
+# a list of books, a list of their authors, and a list of whether or not you like them
+# do these make sense to combine as rows or columns?</code></pre>
+<p>Note that my suggestions are within the code block but they don’t run
+as lines of code. This is because they start with # which makes them
+‘comments’. Comments are useful for putting notes in your code.</p>
 </div>
 </div>
-<div id="mathematical-operators" class="section level2">
-<h2>Mathematical operators</h2>
-<p>In this case we don’t have to use a function, we can just use the
-addition operator: +</p>
-<pre class="r"><code>my_list + myList</code></pre>
-<pre><code>## [1]  7  9 11 13 15</code></pre>
-<p>R recognizes mathematical operators and can be used to do
-calculations.</p>
-<div id="exercise-3" class="section level3">
-<h3>Exercise 3</h3>
-<p>Define two objects: x which is the number 5, and y which is the
-number 4.</p>
-<p>You can now do basic math with x and y, using their names.</p>
-<pre class="r"><code>x + y</code></pre>
-<pre><code>## [1] 9</code></pre>
-<pre class="r"><code>x - y</code></pre>
-<pre><code>## [1] 1</code></pre>
-<pre class="r"><code>x/y</code></pre>
-<pre><code>## [1] 1.25</code></pre>
-<pre class="r"><code>x*y</code></pre>
-<pre><code>## [1] 20</code></pre>
-<pre class="r"><code>x^y</code></pre>
-<pre><code>## [1] 625</code></pre>
+<div id="reading-in-data-files-from-your-computer" class="section level2">
+<h2>Reading in data files from your computer</h2>
+<p>Odds are, recording your data in R is not the best way forward for
+real research projects. Many people enter their data in Excel. We can
+read those files into R in a couple ways.</p>
+<div id="files-types-from-excel" class="section level3">
+<h3>Files types from Excel</h3>
+<p>You can save different files from Excel. Most newer versions default
+to xlsx and older versions to xls. Either of these can be read into R
+without conversion, but it does require a function that is not included
+in the basic functions of R. That will be covered a little later.</p>
+<p>A great option is to save files as comma separated values or a .csv
+file. This is possible through Excel using “Save as…” but it will only
+save one sheet of a workbook so if you’re using multiple tabs they’ll
+need to be saved separately.</p>
+<p>Let’s read in…</p>
+<pre class="r"><code>#data_csv &lt;- read.csv()</code></pre>
 </div>
-</div>
-<div id="how-could-this-calculator-function-and-assigning-names-be-useful-for-working-with-data" class="section level2">
-<h2>How could this calculator function and assigning names be useful for
-working with data?</h2>
-<p>You’re probably not learning R to use it just as a calculator, so
-let’s think about how these functions could be useful for working with
-data.</p>
-<p>Let’s say I’m working with abandoned lots in a city and I’ve numbered
-them and have their lengths from the front of the lot to the back alley
-and the distance along the sidewalk in front as their widths. Run the
-code below to save that information as lists.</p>
-<pre class="r"><code>lots &lt;- c(&quot;lot1&quot;, &quot;lot2&quot;, &quot;lot3&quot;, &quot;lot4&quot;)
-lotLengths &lt;- c(35, 40, 38, 20)
-lotWidths &lt;- c(14, 10, 16, 25)</code></pre>
-<div id="exercise-4" class="section level3">
-<h3>Exercise 4</h3>
-<p>How would I find the area of the lots?</p>
-<p>How could I save that information to a new list called lotAreas?</p>
-</div>
-</div>
-<div id="dataframes" class="section level2">
-<h2>Dataframes</h2>
-<p>These lists can be used on their own, but they’re all information
-about the same lots so it would make sense to put that information
-together. In this case each list is a different measure for each lot so
-they should be put together as columns. We can do that with the cbind()
-function. If each list was observations about 1 lot we could bind them
-together as rows using rbind().</p>
-<pre class="r"><code>lotData &lt;- cbind(lots, lotLengths, lotWidths, lotAreas)
-lotData</code></pre>
-<pre><code>##      lots   lotLengths lotWidths lotAreas
-## [1,] &quot;lot1&quot; &quot;35&quot;       &quot;14&quot;      &quot;490&quot;   
-## [2,] &quot;lot2&quot; &quot;40&quot;       &quot;10&quot;      &quot;400&quot;   
-## [3,] &quot;lot3&quot; &quot;38&quot;       &quot;16&quot;      &quot;608&quot;   
-## [4,] &quot;lot4&quot; &quot;20&quot;       &quot;25&quot;      &quot;500&quot;</code></pre>
-</div>
-<div id="now-you-have-data-in-r" class="section level2">
-<h2>Now you have data in R!</h2>
-</div>
-<div id="answers-to-exercises" class="section level2">
-<h2>Answers to exercises</h2>
-<div id="exercise-1-1" class="section level3">
-<h3>Exercise 1</h3>
-<pre class="r"><code>myList &lt;- c(6, 7, 8, 9, 10)</code></pre>
-</div>
-<div id="exercise-2-1" class="section level3">
-<h3>Exercise 2</h3>
-<pre class="r"><code>mean(my_list)</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>median(my_list)</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>sum(my_list)</code></pre>
-<pre><code>## [1] 15</code></pre>
-<pre class="r"><code>mean(myList)</code></pre>
-<pre><code>## [1] 8</code></pre>
-<pre class="r"><code>median(myList)</code></pre>
-<pre><code>## [1] 8</code></pre>
-<pre class="r"><code>sum(myList)</code></pre>
-<pre><code>## [1] 40</code></pre>
-</div>
-<div id="exercise-3-1" class="section level3">
-<h3>Exercise 3</h3>
-<pre class="r"><code>x &lt;- 5
-y &lt;- 4</code></pre>
-</div>
-<div id="exercise-4-1" class="section level3">
-<h3>Exercise 4</h3>
-<pre class="r"><code>lotLengths * lotWidths</code></pre>
-<pre><code>## [1] 490 400 608 500</code></pre>
-<pre class="r"><code>lotAreas &lt;- lotLengths * lotWidths</code></pre>
+<div id="other-packages" class="section level3">
+<h3>Other packages</h3>
 </div>
 </div>
 
